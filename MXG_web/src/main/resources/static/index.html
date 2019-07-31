@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>MXG商城</title>
+    <link rel="shortcut icon" href="favicon.ico" >
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                url:"/pr",
+                type:"get",
+                success:function (data) {
+                    console.log(data.user)
+                    if (data.user==null || data.user==""){
+                        $("#div01").html("     <a href=\"login.html\">登录</a><span>|</span>\n" +
+                            "                        <a href=\"register.html\">注册</a><span>|</span>\n" +
+                            "                        <a href=\"\" class=\"sep\">消息通知</a>")
+                    }else {
+                        $("#div01").html( "<a> 欢迎你:"+data.user.username+"</a><span>|</span>" +
+                            "<a href=\"login.html\">退出登录</a><span>|</span>" +
+                            "<a href=\"\" class=\"sep\">消息通知</a>")
+                    }
+
+
+                    $(data.list).each(function (i,e) {
+                        if (e.pid=="1"){
+                            $("#p1").append("       <li>\n" +
+                                "                        <div class=\"bg\"><a href=\"detail.html\"><img src='"+e.img+"' alt=\"\"></a></div>\n" +
+                                "                        <div class=\"info\">\n" +
+                                "                            <a href=\"\" class=\"name\">"+e.name+"</a>\n" +
+                                "                            <p class=\"tips\">"+e.tips+"</p>\n" +
+                                "                            <p class=\"price\">"+e.price+"</p>\n" +
+                                "                            <a href=\"login.html\" class=\"btn\">登录后抢购</a>\n" +
+                                "                            <p class=\"person\">"+e.person+"</p>\n" +
+                                "                            \n" +
+                                "                        </div>\n" +
+                                "                    </li>")
+                        }else if (e.pid=="2"){
+                            $("#p2").append("       <li>\n" +
+                                "                        <div class=\"bg\"><a href=\"detail.html\"><img src='"+e.img+"' alt=\"\"></a></div>\n" +
+                                "                        <div class=\"info\">\n" +
+                                "                            <a href=\"\" class=\"name\">"+e.name+"</a>\n" +
+                                "                            <p class=\"tips\">"+e.tips+"</p>\n" +
+                                "                            <p class=\"price\">"+e.price+"</p>\n" +
+                                "                            <a href=\"login.html\" class=\"btn\">登录后抢购</a>\n" +
+                                "                            <p class=\"person\">"+e.person+"</p>\n" +
+                                "                            \n" +
+                                "                        </div>\n" +
+                                "                    </li>")
+                        }else if (e.pid=="3"){
+                            $("#p3").append("       <li>\n" +
+                                "                        <div class=\"bg\"><a href=\"detail.html\"><img src='"+e.img+"' alt=\"\"></a></div>\n" +
+                                "                        <div class=\"info\">\n" +
+                                "                            <a href=\"\" class=\"name\">"+e.name+"</a>\n" +
+                                "                            <p class=\"tips\">"+e.tips+"</p>\n" +
+                                "                            <p class=\"price\">"+e.price+"</p>\n" +
+                                "                            <a href=\"login.html\" class=\"btn\">登录后抢购</a>\n" +
+                                "                            <p class=\"person\">"+e.person+"</p>\n" +
+                                "                            \n" +
+                                "                        </div>\n" +
+                                "                    </li>")
+                        }else if (e.pid=="4"){
+                            $("#p4").append("       <li>\n" +
+                                "                        <div class=\"bg\"><a href=\"detail.html\"><img src='"+e.img+"' alt=\"\"></a></div>\n" +
+                                "                        <div class=\"info\">\n" +
+                                "                            <a href=\"\" class=\"name\">"+e.name+"</a>\n" +
+                                "                            <p class=\"tips\">"+e.tips+"</p>\n" +
+                                "                            <p class=\"price\">"+e.price+"</p>\n" +
+                                "                            <a href=\"login.html\" class=\"btn\">登录后抢购</a>\n" +
+                                "                            <p class=\"person\">"+e.person+"</p>\n" +
+                                "                            \n" +
+                                "                        </div>\n" +
+                                "                    </li>")
+                        }else {
+                            $("#p5").append("       <li>\n" +
+                                "                        <div class=\"bg\"><a href=\"detail.html\"><img src='"+e.img+"' alt=\"\"></a></div>\n" +
+                                "                        <div class=\"info\">\n" +
+                                "                            <a href=\"\" class=\"name\">"+e.name+"</a>\n" +
+                                "                            <p class=\"tips\">"+e.tips+"</p>\n" +
+                                "                            <p class=\"price\">"+e.price+"</p>\n" +
+                                "                            <a href=\"login.html\" class=\"btn\">登录后抢购</a>\n" +
+                                "                            <p class=\"person\">"+e.person+"</p>\n" +
+                                "                            \n" +
+                                "                        </div>\n" +
+                                "                    </li>")
+                        }
+
+                    })
+                }
+            })
+        })
+    </script>
+
+</head>
+<body>
+    <div class="topbar">
+        <div class="container">
+            <div class="topbar-nav">
+                <a href="index.html">MXG商城</a><span>|</span>
+                <a href="">MXGUI</a><span>|</span>
+                <a href="">云服务</a><span>|</span>
+                <a href="">金融</a><span>|</span>
+                <a href="">有品</a><span>|</span>
+                <a href="">政企服务</a><span>|</span>
+            </div>
+            <div class="topbar-cart"><a href="cart.html"><i class="iconfont">&#xe60c;</i>购物车<span>（0）</span></a></div>
+            <div class="topbar-info clearfix" id="div01">
+                 <a href="login.html">登录</a><span>|</span>
+                 <a href="register.html">注册</a><span>|</span>
+                 <a href="" class="sep">消息通知</a>
+            </div>
+        </div>
+    </div>
+
+    
+    </div>
+        <div class="seckill-head"></div>
+        <div class="container">
+            <div id="seckillNav" class="seckill-nav">
+                <ul id="tabs">
+                    <li class="active"><span>手机</span></li>
+                    <li ><span>电视</span></li>
+                    <li><span>笔记本</span></li>
+                    <li><span>空调</span></li>
+                    <li><span>其他</span></li>
+                </ul>
+            </div>
+            <div id="lists" class="seckill-goods">
+                <ul class="clearfix active" id="p1">
+                    <!--<li>-->
+                        <!--<div class="bg"><img src="img/1.png" alt=""></div>-->
+                        <!--<div class="info">-->
+                            <!--<a href="" class="name">移动电源2C 20000mAh 白色</a>-->
+                            <!--<p class="tips">大容量，一个就够用</p>-->
+                            <!--<p class="price">1元 </p>-->
+                            <!--<a href="login.html" class="btn">登录后抢购</a>-->
+                            <!--<p class="person">已有83852人设置提醒</p>-->
+                            <!---->
+                        <!--</div>-->
+                    <!--</li>-->
+                </ul>
+
+                <ul class="clearfix" id="p2">
+
+                </ul>
+
+
+                <ul class="clearfix" id="p3">
+                    <!--<li>-->
+                        <!--<div class="bg"><img src="img/3.png" alt=""></div>-->
+                        <!--<div class="info">-->
+                            <!--<a href="" class="name">移动电源2C 20000mAh 白色</a>-->
+                            <!--<p class="tips">大容量，一个就够用</p>-->
+                            <!--<p class="price">1元 </p>-->
+                            <!--<a href="login.html" class="btn">登录后抢购</a>-->
+                            <!--<p class="person">已有83852人设置提醒</p>-->
+
+                        <!--</div>-->
+                    <!--</li>-->
+                </ul>
+                <ul class="clearfix" id="p4">
+                    <!--<li>-->
+                        <!--<div class="bg"><img src="img/1.png" alt=""></div>-->
+                        <!--<div class="info">-->
+                            <!--<a href="" class="name">移动电源2C 20000mAh 白色</a>-->
+                            <!--<p class="tips">大容量，一个就够用</p>-->
+                            <!--<p class="price">1元 </p>-->
+                            <!--<a href="login.html" class="btn">登录后抢购</a>-->
+                            <!--<p class="person">已有83852人设置提醒</p>-->
+                            <!---->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="bg"><img src="img/3.png" alt=""></div>-->
+                        <!--<div class="info">-->
+                            <!--<a href="" class="name">移动电源2C 20000mAh 白色</a>-->
+                            <!--<p class="tips">大容量，一个就够用</p>-->
+                            <!--<p class="price">1元 </p>-->
+                            <!--<a href="login.html" class="btn">登录后抢购</a>-->
+                            <!--<p class="person">已有83852人设置提醒</p>-->
+                            <!---->
+                        <!--</div>-->
+                    <!--</li>-->
+                </ul>
+                <ul class="clearfix" id="p5">
+                    <!--<li>-->
+                        <!--<div class="bg"><img src="img/2.png" alt=""></div>-->
+                        <!--<div class="info">-->
+                            <!--<a href="" class="name">移动电源2C 20000mAh 白色</a>-->
+                            <!--<p class="tips">大容量，一个就够用</p>-->
+                            <!--<p class="price">1元 </p>-->
+                            <!--<a href="login.html" class="btn">登录后抢购</a>-->
+                            <!--<p class="person">已有83852人设置提醒</p>-->
+                            <!---->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="bg"><img src="img/3.png" alt=""></div>-->
+                        <!--<div class="info">-->
+                            <!--<a href="" class="name">移动电源2C 20000mAh 白色</a>-->
+                            <!--<p class="tips">大容量，一个就够用</p>-->
+                            <!--<p class="price">1元 </p>-->
+                            <!--<a href="login.html" class="btn">登录后抢购</a>-->
+                            <!--<p class="person">已有83852人设置提醒</p>-->
+                            <!---->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<div class="bg"><img src="img/3.png" alt=""></div>-->
+                        <!--<div class="info">-->
+                            <!--<a href="" class="name">移动电源2C 20000mAh 白色</a>-->
+                            <!--<p class="tips">大容量，一个就够用</p>-->
+                            <!--<p class="price">1元 </p>-->
+                            <!--<a href="login.html" class="btn">登录后抢购</a>-->
+                            <!--<p class="person">已有83852人设置提醒</p>-->
+                            <!---->
+                        <!--</div>-->
+                    <!--</li>-->
+                </ul>
+            </div>
+            <div style="text-align:center">
+                <p class="seckill-notice">温馨提示：因可能存在系统缓存、页面更新导致价格变动异常等不确定性情况出现，如您发现活动商品标价或促销信息有异常，请您立即联系客服，以便我们及时补正。</p>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="js/index.js"></script>
+</body>
+
+</html>
