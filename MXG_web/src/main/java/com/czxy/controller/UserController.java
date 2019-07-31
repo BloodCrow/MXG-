@@ -5,6 +5,7 @@ import com.czxy.service.UserService;
 import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,7 +41,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity<Boolean>login(User user, HttpSession session){
         User register = userService.login(user);
-        session.removeAttribute("user");
+        System.out.println(register);
         if (register==null){
             return new ResponseEntity<>(false, HttpStatus.OK);
         }else {
@@ -50,6 +51,9 @@ public class UserController {
         }
     }
 
-
-
+    @GetMapping
+    public ResponseEntity<Void>login( HttpSession session) {
+        session.removeAttribute("user");
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

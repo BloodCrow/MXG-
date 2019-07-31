@@ -34,21 +34,31 @@
             return serializeObj;
         };
 
-        function login(){
-            var d = $("#froml").serializeJson()
-            $.ajax({
-                url:"/user",
-                type:"post",
-                data:d,
-                success:function (data) {
-                    if (data){
-                      location.href="index.html"
-                    }else {
-                        alert("用户名或密码错误")
-                    }
-                }
-            })
-        }
+        function login() {
+			var d = $("#froml").serializeJson()
+			$.ajax({
+				url: "/user",
+				type: "post",
+				data: d,
+				success: function (data) {
+					if (data) {
+						location.href = "index.html"
+					} else {
+						alert("用户名或密码错误")
+					}
+				}
+			})
+		}
+
+			$(function () {
+				$.ajax({
+					url: "/user",
+					type: "get",
+				})
+
+
+			})
+
     </script>
 </head>
 <body>
@@ -63,7 +73,7 @@
 	    </form>
 	    <div class="forgot">
 	    	<a href="#">忘记密码了？</a>
-	    	<input type="submit" onclick="login()" value="登录" >
+	    	<input type="submit" onclick="login()" value="登录">
 	    </div>
 	</div>
 	<div class="login-bottom">

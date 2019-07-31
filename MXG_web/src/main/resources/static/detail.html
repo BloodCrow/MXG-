@@ -7,7 +7,37 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/iconfont.css">
 	<link rel="stylesheet"  href="css/style1.css">
+    <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script>
+        var id = parseInt(location.search.split("=")[1])
 
+        $(function () {
+            $.ajax({
+                url:"/pr/"+id,
+                data:"get",
+                success:function (data) {
+
+                    if (data.user==null || data.user==""){
+                        $("#div01").html("     <a href=\"login.html\">登录</a><span>|</span>\n" +
+                            "                        <a href=\"register.html\">注册</a><span>|</span>\n" +
+                            "                        <a href=\"\" class=\"sep\">消息通知</a>")
+                    }else {
+                        $("#div01").html( "<a> 欢迎你:"+data.user.username+"</a><span>|</span>" +
+                            "<a href=\"login.html\">退出登录</a><span>|</span>" +
+                            "<a href=\"\" class=\"sep\">消息通知</a>")
+                    }
+
+                $("#img").prop("src",data.product.img);
+                $("#name").html(data.product.name)
+                $("#tips").html(data.product.tips)
+                $("#price").html(data.product.price+"元")
+
+                }
+            })
+        })
+
+
+    </script>
 </head>
 <body>
     <div class="topbar">
@@ -21,7 +51,7 @@
                 <a href="">政企服务</a><span>|</span>
             </div>
             <div class="topbar-cart"><a href="cart.html"><i class="iconfont">&#xe60c;</i>购物车<span>（0）</span></a></div>
-            <div class="topbar-info clearfix">
+            <div class="topbar-info clearfix" id="div01">
                  <a href="login.html">登录</a><span>|</span>
                  <a href="register.html">注册</a><span>|</span>
                  <a href="" class="sep">消息通知</a>
@@ -45,11 +75,11 @@
 	
 	
 	<div class="jieshao mt20 w">
-		<div class="left fl"><img src="img/1_1.jpg"></div>
+		<div class="left fl"><img id="img" src="img/1_1.jpg"></div>
 		<div class="right fr">
-			<div class="h3 ml20 mt20">小米6</div>
-			<div class="jianjie mr40 ml20 mt10">变焦双摄，4 轴防抖 / 骁龙835 旗舰处理器，6GB 大内存，最大可选128GB 闪存 / 5.15" 护眼屏 / 四曲面玻璃/陶瓷机身</div>
-			<div class="jiage ml20 mt10">2499.00元</div>
+			<div class="h3 ml20 mt20" id="name">小米6</div>
+			<div class="jianjie mr40 ml20 mt10" id="tips" >变焦双摄，4 轴防抖 / 骁龙835 旗舰处理器，6GB 大内存，最大可选128GB 闪存 / 5.15" 护眼屏 / 四曲面玻璃/陶瓷机身</div>
+			<div class="jiage ml20 mt10" id="price">2499.00元</div>
 			
 			<div class="xiadan ml20 mt20">
 					<input class="jrgwc"  type="button" name="jrgwc" value="立即选购" />

@@ -13,8 +13,15 @@ import java.util.List;
 public class ProductService {
     @Resource
     private ProductMapper productMapper;
+
     public List<Product> findAllPr(){
         List<Product> products = productMapper.selectAll();
         return products;
     }
+
+    public Product findPro(Integer id){
+        Product product = productMapper.selectByPrimaryKey(id);
+        return product;
+    }
+
 }

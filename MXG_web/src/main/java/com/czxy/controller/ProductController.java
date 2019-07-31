@@ -3,10 +3,12 @@ package com.czxy.controller;
 import com.czxy.domain.Product;
 import com.czxy.domain.User;
 import com.czxy.domain.UserPojo;
+import com.czxy.domain.Userpojotwo;
 import com.czxy.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,4 +35,14 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Userpojotwo> findPro(@PathVariable("id") String id,HttpSession session) {
+        Product product = productService.findPro(Integer.parseInt(id));
+        User user = (User) session.getAttribute("user");
+        Userpojotwo userpojotwo=new Userpojotwo(product,user);
+
+        return new ResponseEntity<>(userpojotwo,HttpStatus.OK);
+    }
+
 }
