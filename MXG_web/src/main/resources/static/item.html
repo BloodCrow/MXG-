@@ -1,0 +1,112 @@
+﻿<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>订单详情</title>
+		<link rel="shortcut icon" href="favicon.ico" >
+		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+		<!-- 引入自定义css文件 style.css -->
+		<link rel="stylesheet" href="css/style.css" type="text/css"/>
+	</head>
+	<body>
+	 <div class="topbar">
+        <div class="container">
+            <div class="topbar-nav">
+                <a href="index.html">MXG商城</a><span>|</span>
+                <a href="">MXGUI</a><span>|</span>
+                <a href="">云服务</a><span>|</span>
+                <a href="">金融</a><span>|</span>
+                <a href="">有品</a><span>|</span>
+                <a href="">政企服务</a><span>|</span>
+            </div>
+            <div class="topbar-cart"><a href=""><i class="iconfont">&#xe60c;</i>购物车<span>（0）</span></a></div>
+            <div class="topbar-info clearfix">
+                 <a href="login.html">登录</a><span>|</span>
+                 <a href="register.html">注册</a><span>|</span>
+                 <a href="" class="sep">消息通知</a>
+            </div>
+        </div>
+    </div>
+
+		
+	
+
+
+		<div class="container">
+			<div class="row">
+
+				<div style="margin:0 auto; margin-top:10px;width:950px;">
+					<strong style="font-size:16px;margin:5px 0;">订单详情</strong>
+					<table class="table table-bordered">
+							<tbody>
+							<tr class="warning" style="background-color:#ff6600;">
+								<th>订单号</th>
+								<th>商品名称</th>
+								<th>价格</th>
+								<th>数量</th>
+								<th>小计</th>
+								<th>订单状态</th>
+								<th>订单时间</th>
+								<th>操作</th>
+							</tr>
+
+							
+							<tr class="active">
+								<td width="60" width="10%">
+									<span class="subtotal">订单号</span>
+								</td>
+								<td width="20%">
+									<a target="_blank">商品名</a>
+								</td>
+								<td width="10%">
+									价格
+								</td>
+								<td width="10%">
+									<input type="text" class="count" name="quantity" value="数量" maxlength="4" size="10" pid="${ele.value.product.pid}">
+								</td>
+								<td width="10%">
+									<span class="subtotal">小计</span>
+								</td>
+								<td width="10%">
+									<span class="subtotal">订单状态</span>
+								</td>
+								<td width="20%">
+									<span class="subtotal">订单时间</span>
+								</td>
+								<td width="10%">
+									<a href="javascript:;" class="buy">支付</a>|<a href="javascript:;" class="delete">删除</a>
+								</td>
+							</tr>
+							</tbody>
+
+
+					</table>
+				</div>
+			</div>
+
+			<div style="margin-right:130px;">
+				<div style="text-align:right;">
+					<em style="color:#ff6600;">
+				
+			</em> 赠送积分: <em style="color:#ff6600;"></em>&nbsp; 商品金额: <strong style="color:#ff6600;">￥333元</strong>
+				</div>
+				<div style="text-align:right;margin-top:10px;margin-bottom:10px;">
+					<a href="${pageContext.request.contextPath}/orderServlet?method=createOrder">
+								<input type="submit" width="100" value="提交订单" name="submit" border="0" style="background: url('${pageContext.request.contextPath}/img/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+										height:35px;width:100px;color:white;">
+					</a>
+				</div>
+			</div>
+		</div>
+		</div>
+		<div class="clear"></div>
+		<div style="text-align:center">
+		            <p class="seckill-notice">温馨提示：因可能存在系统缓存、页面更新导致价格变动异常等不确定性情况出现，如您发现活动商品标价或促销信息有异常，请您立即联系客服，以便我们及时补正。</p>
+		</div>
+	</div>
+	</body>
+
+   <script src="js/index.js"></script>
+</html>
