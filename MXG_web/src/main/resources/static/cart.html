@@ -37,13 +37,13 @@
 					"\t\t\t\t\t\t\t\t\t"+ele.product.price+"\n" +
 					"\t\t\t\t\t\t\t\t</td>\n" +
 					"\t\t\t\t\t\t\t\t<td width=\"10%\">\n" +
-					"\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"count\" name=\"quantity\" value='"+ele.number+"' maxlength=\"4\" size=\"10\" pid=\"${ele.value.product.pid}\">\n" +
+					"\t\t\t\t\t\t\t\t\t<span></span>"+ele.number+"<span></span>" +
 					"\t\t\t\t\t\t\t\t</td>\n" +
 					"\t\t\t\t\t\t\t\t<td width=\"15%\">\n" +
 					"\t\t\t\t\t\t\t\t\t<span class=\"subtotal\">"+ele.total+"</span>\n" +
 					"\t\t\t\t\t\t\t\t</td>\n" +
 					"\t\t\t\t\t\t\t\t<td>\n" +
-					"\t\t\t\t\t\t\t\t\t<a href=\"javascript:;\" class=\"delete\">删除</a>\n" +
+					"\t\t\t\t\t\t\t\t\t<a href=\"javascript:;\" class=\"delete\" onclick='del("+ele.upid+")'>删除</a>\n" +
 					"\t\t\t\t\t\t\t\t</td>\n" +
 					"\t\t\t\t\t\t\t</tr>")
 
@@ -51,10 +51,29 @@
 					}
 				}
 			})
-
-
 		})
-			
+
+			function del(upid) {
+			$.ajax({
+				url:"/Caritem/"+upid,
+				type:"delete",
+				success:function () {
+					location.href="cart.html";
+				}
+			})
+
+			}
+
+			function Cleanall() {
+				$.ajax({
+					url:"/Caritem/Cleanall",
+					type:"delete",
+					success:function () {
+						location.href="cart.html";
+					}
+				})
+			}
+
 		</script>
 	</head>
 	<body>
@@ -77,8 +96,7 @@
         </div>
     </div>
 
-		
-	
+
 
 
 		<div class="container">
@@ -134,9 +152,8 @@
 			</em> 赠送积分: <em style="color:#ff6600;"></em>&nbsp; 商品金额: <strong style="color:#ff6600;" id="intotall">￥333元</strong>
 				</div>
 				<div style="text-align:right;margin-top:10px;margin-bottom:10px;">
-					<a href="${pageContext.request.contextPath}/jsp/order_info.jsp" id="clear" class="clear">清空购物车</a>
-					<a href="${pageContext.request.contextPath}/orderServlet?method=createOrder">
-								<h1><a href="${pageContext.request.contextPath}/jsp/login.jsp">请登录后 提交订单</a></h1>
+					<a  id="clear" class="clear" onclick="Cleanall()">清空购物车</a>
+					<a href="/item.html">
 								<input type="submit" width="100" value="提交订单" name="submit" border="0" style="background: url('${pageContext.request.contextPath}/img/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 										height:35px;width:100px;color:white;">
 					</a>

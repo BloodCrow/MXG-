@@ -1,6 +1,7 @@
 package com.czxy.dao;
 
 import com.czxy.domain.Caritem;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Service;
@@ -28,4 +29,10 @@ public interface CaritemMapper extends Mapper<Caritem> {
 
     @Select("SELECT * FROM shoppingcart WHERE userid=#{userid}")
     public List<Caritem> findall(@Param("userid") Integer id);
+
+    @Delete("DELETE FROM shoppingcart WHERE upid=#{upid}")
+    public void delupid(@Param("upid")Integer upid);
+
+    @Delete("DELETE FROM shoppingcart WHERE userid=#{userid}")
+    public void Cleanall(@Param("userid")Integer userid);
 }

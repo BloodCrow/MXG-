@@ -6,10 +6,7 @@ import com.czxy.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -56,8 +53,21 @@ public class CaritemController  {
         }
 
         CarPojp carPojp = caritemService.findall(user.getId(),user);
-
         return new ResponseEntity<>(carPojp,HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{upid}")
+    public ResponseEntity<Void> delcar(@PathVariable("upid")String upid){
+        caritemService.del(Integer.parseInt(upid));
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/Cleanall")
+    public ResponseEntity<Void> Cleanall(HttpSession session){
+        User user = (User) session.getAttribute("user");
+        caritemService.Cleanall(user.getId());
+        return new ResponseEntity<>(HttpStatus.OK);
+
 
     }
 }

@@ -41,9 +41,16 @@ public class CaritemService {
 
         for (Caritem caritem : findall) {
             caritem.setProduct(productMapper.selectByPrimaryKey(caritem.getProid()));
-            System.out.println(caritem);
         }
 
         return new CarPojp(findall,user);
+    }
+
+    public void del(Integer id) {
+        caritemMapper.delupid(id);
+    }
+
+    public void Cleanall(Integer id) {
+        caritemMapper.Cleanall(id);
     }
 }
