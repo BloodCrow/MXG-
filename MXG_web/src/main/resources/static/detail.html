@@ -29,13 +29,27 @@
 
                 $("#img").prop("src",data.product.img);
                 $("#name").html(data.product.name)
+                $("#name01").html(data.product.name)
                 $("#tips").html(data.product.tips)
                 $("#price").html(data.product.price+"元")
 
                 }
             })
         })
-
+        function addcart() {
+            $.ajax({
+                url:"/Caritem/"+id,
+                type:"get",
+                statusCode:{
+                    500:function () {
+                        location.href="login.html";
+                    },
+                    200:function () {
+                        location.href="cart.html";
+                    }
+                }
+            })
+        }
 
     </script>
 </head>
@@ -67,7 +81,7 @@
               <form action="post" method="">
 	<div class="xiangqing">
 		<div class="neirong w">
-			<div class="xiaomi6 fl">小米6</div>
+			<div class="xiaomi6 fl" id="name01">小米6</div>
 			
 			<div class="clear"></div>
 		</div>	
@@ -83,7 +97,7 @@
 			
 			<div class="xiadan ml20 mt20">
 					<input class="jrgwc"  type="button" name="jrgwc" value="立即选购" />
-					<input class="jrgwc" type="button" name="jrgwc" value="加入购物车" />
+					<input class="jrgwc" type="button" name="jrgwc" value="加入购物车" onclick="addcart()"/>
 				
 			</div>
 		</div>

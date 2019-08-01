@@ -41,7 +41,6 @@ public class UserController {
     @PostMapping
     public ResponseEntity<Boolean>login(User user, HttpSession session){
         User register = userService.login(user);
-        System.out.println(register);
         if (register==null){
             return new ResponseEntity<>(false, HttpStatus.OK);
         }else {
