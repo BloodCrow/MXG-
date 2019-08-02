@@ -4,7 +4,6 @@ import com.czxy.domain.Caritem;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
@@ -35,4 +34,8 @@ public interface CaritemMapper extends Mapper<Caritem> {
 
     @Delete("DELETE FROM shoppingcart WHERE userid=#{userid}")
     public void Cleanall(@Param("userid")Integer userid);
+
+   @Select("SELECT * FROM shoppingcart WHERE userid=#{userid} AND proid=#{proid}")
+    public Caritem num(@Param("userid") Integer userid,@Param("proid") Integer proid);
+
 }

@@ -1,6 +1,9 @@
 package com.czxy.controller;
 
-import com.czxy.domain.*;
+import com.czxy.domain.CarPojp;
+import com.czxy.domain.Caritem;
+import com.czxy.domain.Product;
+import com.czxy.domain.User;
 import com.czxy.service.CaritemService;
 import com.czxy.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,7 +70,29 @@ public class CaritemController  {
         User user = (User) session.getAttribute("user");
         caritemService.Cleanall(user.getId());
         return new ResponseEntity<>(HttpStatus.OK);
+    }
 
+    //加数量
+    @GetMapping("AddNum")
+    public ResponseEntity<Void>Addnum(String pid,HttpSession session){
+        User user = (User) session.getAttribute("user");
+        Caritem num = caritemService.num(user.getId(), Integer.parseInt(pid));
+        num.setNumber(num.getNumber()+1);
+        System.out.println(num);
+        caritemService.update(num);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    //减数量
+    @GetMapping("decrease")
+    public ResponseEntity<Void>decrease(String pid,HttpSession session){
+        User user = (User) session.getAttribute("user");
+        Caritem num = caritemService.num(user.getId(), Integer.parseInt(pid));
+        num.setNumber(num.getNumber() - 1);
+        if (num.getNumber()<=1) {
+            num.setNumber(1);
+        }
 
+        caritemService.update(num);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
