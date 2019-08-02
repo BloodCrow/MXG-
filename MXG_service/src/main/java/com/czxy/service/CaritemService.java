@@ -53,4 +53,8 @@ public class CaritemService {
     public void Cleanall(Integer id) {
         caritemMapper.Cleanall(id);
     }
+    public Caritem num(Integer uid,Integer pid){
+        Caritem num = caritemMapper.num(uid, pid);
+        return num;
+    }
 }
