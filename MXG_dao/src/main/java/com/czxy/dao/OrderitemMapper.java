@@ -1,6 +1,7 @@
 package com.czxy.dao;
 
 import com.czxy.domain.Orderitem;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import tk.mybatis.mapper.common.Mapper;
@@ -23,4 +24,7 @@ public interface OrderitemMapper extends Mapper<Orderitem> {
 
     @Select("SELECT * FROM `order` WHERE userid=#{userid}")
     public List<Orderitem> findall(@Param("userid") Integer id);
+
+    @Delete("DELETE FROM  `order` WHERE oid=#{oid}")
+    void deloid(@Param("oid") Integer  oid);
 }

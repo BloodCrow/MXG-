@@ -68,4 +68,10 @@ public class OrderitemController {
        orderitemService.orderall(user.getId());
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deloid(@PathVariable("id")String id){
+        orderitemService.deloid(Integer.parseInt(id));
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
