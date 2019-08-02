@@ -14,6 +14,7 @@
 
 		var id = parseInt(location.search.split("=")[1])
 			$(function () {
+				console.log(id)
 				$.ajax({
 					url:"/order/"+id,
 					data:"get",
@@ -110,7 +111,7 @@
                 <a href="404.html">有品</a><span>|</span>
                 <a href="404.html">政企服务</a><span>|</span>
             </div>
-            <div class="topbar-cart"><a href=""><i class="iconfont">&#xe60c;</i>购物车<span>（0）</span></a></div>
+            <div class="topbar-cart"><a href="cart.html"><i class="iconfont">&#xe60c;</i>购物车<span>（0）</span></a></div>
             <div class="topbar-info clearfix">
                  <a href="login.html">登录</a><span>|</span>
                  <a href="register.html">注册</a><span>|</span>

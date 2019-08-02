@@ -34,6 +34,7 @@ public class OrderitemService {
     private ProductService productService;
 
     public void add(Orderitem orderitem) {
+        System.out.println(orderitem);
     orderitemMapper.add(orderitem);
     }
 
@@ -42,16 +43,21 @@ public class OrderitemService {
         return orderitem;
     }
 
-    public List<Orderitem>  orderall(Integer id) {
-//        List<Caritem> caritemList = caritemMapper.findall(id);
-//        DateFormat df=new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
-//        String format = df.format(new Date().getTime());
-//        for (Caritem caritem : caritemList) {
-//            Product product = productService.findPro(caritem.getProid());
-//            Orderitem orderitem=new Orderitem(id,product.getName(),Double.parseDouble(product.getPrice()),1,"未支付",format);
-//            orderitemMapper.add(orderitem);
-//        }
-//        caritemMapper.Cleanall(id);
+    public void   orderall(Integer id) {
+        List<Caritem> caritemList = caritemMapper.findall(id);
+        DateFormat df=new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String format = df.format(new Date().getTime());
+        for (Caritem caritem : caritemList) {
+            Product product = productService.findPro(caritem.getProid());
+            Orderitem orderitem=new Orderitem(id,product.getName(),Double.parseDouble(product.getPrice()),caritem.getNumber(),"未支付",format);
+            orderitemMapper.add(orderitem);
+        }
+        caritemMapper.Cleanall(id);
+
+    }
+
+    public List<Orderitem> findall(Integer id){
+
         List<Orderitem> findall = orderitemMapper.findall(id);
         return findall;
     }

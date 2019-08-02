@@ -78,7 +78,6 @@ public class CaritemController  {
         User user = (User) session.getAttribute("user");
         Caritem num = caritemService.num(user.getId(), Integer.parseInt(pid));
         num.setNumber(num.getNumber()+1);
-        System.out.println(num);
         caritemService.update(num);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -91,7 +90,6 @@ public class CaritemController  {
         if (num.getNumber()<=1) {
             num.setNumber(1);
         }
-
         caritemService.update(num);
         return new ResponseEntity<>(HttpStatus.OK);
     }

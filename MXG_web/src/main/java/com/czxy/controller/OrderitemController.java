@@ -9,10 +9,7 @@ import com.czxy.service.OrderitemService;
 import com.czxy.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -20,6 +17,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @author Gongli
@@ -57,8 +55,17 @@ public class OrderitemController {
         if (user==null){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        List<Orderitem> orderall = orderitemService.orderall(user.getId());
+        List<Orderitem> orderall = orderitemService.findall(user.getId());
         return new ResponseEntity<>(orderall,HttpStatus.OK);
     }
 
+    @DeleteMapping
+    public ResponseEntity<Void> delorder(HttpSession session){
+        User user = (User) session.getAttribute("user");
+        if (user==null){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+       orderitemService.orderall(user.getId());
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
