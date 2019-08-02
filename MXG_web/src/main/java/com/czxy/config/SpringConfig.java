@@ -20,5 +20,6 @@ public class SpringConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginInterceptor).addPathPatterns("/cart.html");
+        registry.addInterceptor(loginInterceptor).addPathPatterns("/item.html");
     }
 }

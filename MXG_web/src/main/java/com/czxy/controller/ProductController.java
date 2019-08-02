@@ -41,8 +41,9 @@ public class ProductController {
         Product product = productService.findPro(Integer.parseInt(id));
         User user = (User) session.getAttribute("user");
         Userpojotwo userpojotwo=new Userpojotwo(product,user);
-
         return new ResponseEntity<>(userpojotwo,HttpStatus.OK);
     }
+
+
 
 }

@@ -17,11 +17,12 @@
                     if (data.user==null || data.user==""){
                         $("#div01").html("     <a href=\"login.html\">登录</a><span>|</span>\n" +
                             "                        <a href=\"register.html\">注册</a><span>|</span>\n" +
-                            "                        <a href=\"\" class=\"sep\">消息通知</a>")
+                            "                        <a href=\"\" class=\"sep\">消息通知</a> <span>|</span><a href=\"/item2.html\" class=\"sep\">我的订单</a>")
                     }else {
                         $("#div01").html( "<a> 欢迎你:"+data.user.username+"</a><span>|</span>" +
                             "<a href=\"login.html\">退出登录</a><span>|</span>" +
-                            "<a href=\"\" class=\"sep\">消息通知</a>")
+                            "<a href=\"\" class=\"sep\">消息通知</a><span>|</span> <a href=\"/item2.html\" class=\"sep\">我的订单</a>"
+                        )
                     }
 
 
@@ -33,7 +34,7 @@
                                 "                            <a href=\"\" class=\"name\">"+e.name+"</a>\n" +
                                 "                            <p class=\"tips\">"+e.tips+"</p>\n" +
                                 "                            <p class=\"price\">"+e.price+"</p>\n" +
-                                "                            <a href=\"cart.html\" class=\"btn\">立即购买</a>\n" +
+                                "                            <a href='item.html?id="+e.id+"' class=\"btn\">立即购买</a>\n" +
                                 "                            <p class=\"person\">"+e.person+"</p>\n" +
                                 "                            \n" +
                                 "                        </div>\n" +
@@ -45,7 +46,7 @@
                                 "                            <a href=\"\" class=\"name\">"+e.name+"</a>\n" +
                                 "                            <p class=\"tips\">"+e.tips+"</p>\n" +
                                 "                            <p class=\"price\">"+e.price+"</p>\n" +
-                                "                            <a href=\"cart.html\" class=\"btn\">立即购买</a>\n" +
+                                "                            <a href='item.html?id="+e.id+"' class=\"btn\">立即购买</a>\n" +
                                 "                            <p class=\"person\">"+e.person+"</p>\n" +
                                 "                            \n" +
                                 "                        </div>\n" +
@@ -57,7 +58,7 @@
                                 "                            <a href=\"\" class=\"name\">"+e.name+"</a>\n" +
                                 "                            <p class=\"tips\">"+e.tips+"</p>\n" +
                                 "                            <p class=\"price\">"+e.price+"</p>\n" +
-                                "                            <a href=\"cart.html\" class=\"btn\">立即购买</a>\n" +
+                                "                            <a href='item.html?id="+e.id+"' class=\"btn\">立即购买</a>\n" +
                                 "                            <p class=\"person\">"+e.person+"</p>\n" +
                                 "                            \n" +
                                 "                        </div>\n" +
@@ -69,7 +70,7 @@
                                 "                            <a href=\"\" class=\"name\">"+e.name+"</a>\n" +
                                 "                            <p class=\"tips\">"+e.tips+"</p>\n" +
                                 "                            <p class=\"price\">"+e.price+"</p>\n" +
-                                "                            <a href=\"cart.html\" class=\"btn\">立即购买</a>\n" +
+                                "                            <a href='item.html?id="+e.id+"' class=\"btn\">立即购买</a>\n" +
                                 "                            <p class=\"person\">"+e.person+"</p>\n" +
                                 "                            \n" +
                                 "                        </div>\n" +
@@ -81,7 +82,7 @@
                                 "                            <a href=\"\" class=\"name\">"+e.name+"</a>\n" +
                                 "                            <p class=\"tips\">"+e.tips+"</p>\n" +
                                 "                            <p class=\"price\">"+e.price+"</p>\n" +
-                                "                            <a href=\"cart.html\" class=\"btn\">立即购买</a>\n" +
+                                "                            <a href='item.html?id="+e.id+"' class=\"btn\">立即购买</a>\n" +
                                 "                            <p class=\"person\">"+e.person+"</p>\n" +
                                 "                            \n" +
                                 "                        </div>\n" +
@@ -112,6 +113,7 @@
                  <a href="register.html">注册</a><span>|</span>
                  <a href="" class="sep">消息通知</a>
             </div>
+
         </div>
     </div>
 

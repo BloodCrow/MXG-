@@ -4,75 +4,62 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>购物车</title>
+		<title>订单详情</title>
 		<link rel="shortcut icon" href="favicon.ico" >
 		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
 		<!-- 引入自定义css文件 style.css -->
 		<link rel="stylesheet" href="css/style.css" type="text/css"/>
 		<script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
 		<script>
-		$(function () {
-			$.ajax({
-				url:"/Caritem",
-				type:"get",
-				statusCode:{
-					500:function () {
-						location.href="login.html";
-					},
-					200:function (data) {
-						$("#div01").html( "<a> 欢迎你:"+data.user.username+"</a><span>|</span>" +
-								"<a href=\"login.html\">退出登录</a><span>|</span>" +
-								"<a href=\"\" class=\"sep\">消息通知</a>")
-						$("#intotall").html(data.intotal+"元")
-							$.each(data.list,function (index,ele) {
-			$("#tody").append("<tr class=\"active\">\n" +
-					"\t\t\t\t\t\t\t\t<td width=\"60\" width=\"40%\">\n" +
-					"\t\t\t\t\t\t\t\t\t<input type=\"hidden\" name=\"id\" value=\"22\">\n" +
-					"\t\t\t\t\t\t\t\t\t<img src='"+ele.product.img+"' width=\"70\" height=\"60\">\n" +
-					"\t\t\t\t\t\t\t\t</td>\n" +
-					"\t\t\t\t\t\t\t\t<td width=\"30%\">\n" +
-					"\t\t\t\t\t\t\t\t\t<a target=\"_blank\">"+ele.product.name+"</a>\n" +
-					"\t\t\t\t\t\t\t\t</td>\n" +
-					"\t\t\t\t\t\t\t\t<td width=\"20%\">\n" +
-					"\t\t\t\t\t\t\t\t\t"+ele.product.price+"\n" +
-					"\t\t\t\t\t\t\t\t</td>\n" +
-					"\t\t\t\t\t\t\t\t<td width=\"10%\">\n" +
-					"\t\t\t\t\t\t\t\t\t<span></span>"+ele.number+"<span></span>" +
-					"\t\t\t\t\t\t\t\t</td>\n" +
-					"\t\t\t\t\t\t\t\t<td width=\"15%\">\n" +
-					"\t\t\t\t\t\t\t\t\t<span class=\"subtotal\">"+ele.total+"</span>\n" +
-					"\t\t\t\t\t\t\t\t</td>\n" +
-					"\t\t\t\t\t\t\t\t<td>\n" +
-					"\t\t\t\t\t\t\t\t\t<a href=\"javascript:;\" class=\"delete\" onclick='del("+ele.upid+")'>删除</a>\n" +
-					"\t\t\t\t\t\t\t\t</td>\n" +
-					"\t\t\t\t\t\t\t</tr>")
 
-							})
-					}
-				}
-			})
-		})
 
-			function del(upid) {
-			$.ajax({
-				url:"/Caritem/"+upid,
-				type:"delete",
-				success:function () {
-					location.href="cart.html";
-				}
-			})
+			$(function () {
 
-			}
 
-			function Cleanall() {
 				$.ajax({
-					url:"/Caritem/Cleanall",
-					type:"delete",
-					success:function () {
-						location.href="cart.html";
+					url:"/order",
+					data:"get",
+					statusCode: {
+						200: function (data) {
+							$.each(data,function (index,ele) {
+
+
+							$("#tbody").append("\t<tr class=\"active\">\n" +
+									"\t\t\t\t\t\t\t\t<td width=\"60\" width=\"10%\">\n" +
+									"\t\t\t\t\t\t\t\t\t<span class=\"subtotal\">" + ele.oid + "</span>\n" +
+									"\t\t\t\t\t\t\t\t</td>\n" +
+									"\t\t\t\t\t\t\t\t<td width=\"20%\">\n" +
+									"\t\t\t\t\t\t\t\t\t<a target=\"_blank\">" + ele.pname + "</a>\n" +
+									"\t\t\t\t\t\t\t\t</td>\n" +
+									"\t\t\t\t\t\t\t\t<td width=\"10%\">\n" +
+									"\t\t\t\t\t\t\t\t\t" + ele.price + "\n" +
+									"\t\t\t\t\t\t\t\t</td>\n" +
+									"\t\t\t\t\t\t\t\t<td width=\"10%\">\n" +
+									"\t\t\t\t\t\t " + ele.number + "\t\t" +
+									"\t\t\t\t\t\t\t\t<td width=\"10%\">\n" +
+									"\t\t\t\t\t\t\t\t\t<span class=\"subtotal\">" + ele.sumprice + "</span>\n" +
+									"\t\t\t\t\t\t\t\t</td>\n" +
+									"\t\t\t\t\t\t\t\t<td width=\"10%\">\n" +
+									"\t\t\t\t\t\t\t\t\t<span class=\"subtotal\">" + ele.orderStatus + "</span>\n" +
+									"\t\t\t\t\t\t\t\t</td>\n" +
+									"\t\t\t\t\t\t\t\t<td width=\"20%\">\n" +
+									"\t\t\t\t\t\t\t\t\t<span class=\"subtotal\">" + ele.orderTime + "</span>\n" +
+									"\t\t\t\t\t\t\t\t</td>\n" +
+									"\t\t\t\t\t\t\t\t<td width=\"10%\">\n" +
+									"\t\t\t\t\t\t\t\t\t<a href=\"javascript:;\" class=\"buy\">支付</a>|<a href=\"javascript:;\" class=\"delete\">删除</a>\n" +
+									"\t\t\t\t\t\t\t\t</td>\n" +
+									"\t\t\t\t\t\t\t</tr>")
+							})
+						},
+						500: function () {
+							location.hre="login.html"
+						}
 					}
 				})
-			}
+
+			})
+
+
 
 		</script>
 	</head>
@@ -88,7 +75,7 @@
                 <a href="">政企服务</a><span>|</span>
             </div>
             <div class="topbar-cart"><a href=""><i class="iconfont">&#xe60c;</i>购物车<span>（0）</span></a></div>
-            <div class="topbar-info clearfix" id="div01">
+            <div class="topbar-info clearfix">
                  <a href="login.html">登录</a><span>|</span>
                  <a href="register.html">注册</a><span>|</span>
                  <a href="" class="sep">消息通知</a>
@@ -96,7 +83,8 @@
         </div>
     </div>
 
-
+		
+	
 
 
 		<div class="container">
@@ -105,39 +93,45 @@
 				<div style="margin:0 auto; margin-top:10px;width:950px;">
 					<strong style="font-size:16px;margin:5px 0;">订单详情</strong>
 					<table class="table table-bordered">
-							<tbody id="tody">
+							<tbody id="tbody">
 							<tr class="warning" style="background-color:#ff6600;">
-								<th>图片</th>
-								<th>商品</th>
+								<th>订单号</th>
+								<th>商品名称</th>
 								<th>价格</th>
 								<th>数量</th>
 								<th>小计</th>
+								<th>订单状态</th>
+								<th>订单时间</th>
 								<th>操作</th>
 							</tr>
 
 							
 							<!--<tr class="active">-->
-								<!--<td width="60" width="40%">-->
-									<!--<input type="hidden" name="id" value="22">-->
-									<!--<img src="${pageContext.request.contextPath}/${ele.value.product.pimage}" width="70" height="60">-->
-								<!--</td>-->
-								<!--<td width="30%">-->
-									<!--<a target="_blank">商品名</a>-->
+								<!--<td width="60" width="10%">-->
+									<!--<span class="subtotal">订单号</span>-->
 								<!--</td>-->
 								<!--<td width="20%">-->
+									<!--<a target="_blank">商品名</a>-->
+								<!--</td>-->
+								<!--<td width="10%">-->
 									<!--价格-->
 								<!--</td>-->
 								<!--<td width="10%">-->
 									<!--<input type="text" class="count" name="quantity" value="数量" maxlength="4" size="10" pid="${ele.value.product.pid}">-->
 								<!--</td>-->
-								<!--<td width="15%">-->
+								<!--<td width="10%">-->
 									<!--<span class="subtotal">小计</span>-->
 								<!--</td>-->
-								<!--<td>-->
-									<!--<a href="javascript:;" class="delete">删除</a>-->
+								<!--<td width="10%">-->
+									<!--<span class="subtotal">订单状态</span>-->
+								<!--</td>-->
+								<!--<td width="20%">-->
+									<!--<span class="subtotal">订单时间</span>-->
+								<!--</td>-->
+								<!--<td width="10%">-->
+									<!--<a href="javascript:;" class="buy">支付</a>|<a href="javascript:;" class="delete">删除</a>-->
 								<!--</td>-->
 							<!--</tr>-->
-							
 							</tbody>
 
 
@@ -149,19 +143,16 @@
 				<div style="text-align:right;">
 					<em style="color:#ff6600;">
 				
-			</em> 赠送积分: <em style="color:#ff6600;"></em>&nbsp; 商品金额: <strong style="color:#ff6600;" id="intotall">￥333元</strong>
+			</em> 赠送积分: <em style="color:#ff6600;"></em>&nbsp; 商品金额: <strong style="color:#ff6600;">￥333元</strong>
 				</div>
 				<div style="text-align:right;margin-top:10px;margin-bottom:10px;">
-					<a  id="clear" class="clear" onclick="Cleanall()">清空购物车</a>
-					<a href="/static/item2.html">
-								<input type="button" width="100" value="提交订单" name="submit" border="0" style="background: url('${pageContext.request.contextPath}/img/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+					<a href="${pageContext.request.contextPath}/orderServlet?method=createOrder">
+								<input type="submit" width="100" value="提交订单" name="submit" border="0" style="background: url('${pageContext.request.contextPath}/img/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 										height:35px;width:100px;color:white;">
 					</a>
 				</div>
 			</div>
-
 		</div>
-
 		</div>
 		<div class="clear"></div>
 		<div style="text-align:center">
