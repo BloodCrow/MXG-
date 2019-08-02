@@ -61,4 +61,8 @@ public class OrderitemService {
         List<Orderitem> findall = orderitemMapper.findall(id);
         return findall;
     }
+
+    public void deloid(Integer parseInt) {
+        orderitemMapper.deloid(parseInt);
+    }
 }

@@ -52,7 +52,8 @@
 									"\t\t\t\t\t\t\t\t\t<span class=\"subtotal\">" + ele.orderTime + "</span>\n" +
 									"\t\t\t\t\t\t\t\t</td>\n" +
 									"\t\t\t\t\t\t\t\t<td width=\"10%\">\n" +
-									"\t\t\t\t\t\t\t\t\t<a href=\"javascript:;\" class=\"buy\">支付</a>|<a href=\"javascript:;\" class=\"delete\">删除</a>\n" +
+									"\t\t\t\t\t\t\t\t\t<a href=\"javascript:;\" class=\"buy\">支付</a>" +
+									"|<a href=\"javascript:;\" class=\"delete\" onclick='deloid("+ele.oid+")'>删除</a>\n" +
 									"\t\t\t\t\t\t\t\t</td>\n" +
 									"\t\t\t\t\t\t\t</tr>")
 							})
@@ -64,7 +65,15 @@
 				})
 
 			})
-
+function deloid(oid) {
+	$.ajax({
+		url:"/order/"+oid,
+		type:"delete",
+		success:function () {
+			location.href="item2.html";
+		}
+	})
+}
 
 
 		</script>
