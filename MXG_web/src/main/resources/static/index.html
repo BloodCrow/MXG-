@@ -17,11 +17,12 @@
                     if (data.user==null || data.user==""){
                         $("#div01").html("     <a href=\"login.html\">登录</a><span>|</span>\n" +
                             "                        <a href=\"register.html\">注册</a><span>|</span>\n" +
-                            "                        <a href=\"\" class=\"sep\">消息通知</a>")
+                            "                        <a href=\"detail.html?id="+e.id+"\" class=\"sep\">消息通知</a>")
                     }else {
                         $("#div01").html( "<a> 欢迎你:"+data.user.username+"</a><span>|</span>" +
                             "<a href=\"login.html\">退出登录</a><span>|</span>" +
-                            "<a href=\"\" class=\"sep\">消息通知</a>")
+                            "<a href=\"404.html\" class=\"sep\">消息通知</a><span>|</span>\n" +
+                            "<a href=\"item2.html\">我的订单</a>")
                     }
 
 
@@ -30,7 +31,7 @@
                             $("#p1").append("       <li>\n" +
                                 "                        <div class=\"bg\"><a href='detail.html?id="+e.id+"'><img src='"+e.img+"' alt=\"\"></a></div>\n" +
                                 "                        <div class=\"info\">\n" +
-                                "                            <a href=\"\" class=\"name\">"+e.name+"</a>\n" +
+                                "                            <a href=\"detail.html?id="+e.id+"\" class=\"name\">"+e.name+"</a>\n" +
                                 "                            <p class=\"tips\">"+e.tips+"</p>\n" +
                                 "                            <p class=\"price\">"+e.price+"</p>\n" +
                                 "                            <a href='item.html?id="+e.id+"' class=\"btn\">立即购买</a>\n" +
@@ -42,7 +43,7 @@
                             $("#p2").append("       <li>\n" +
                                 "                        <div class=\"bg\"><a href='detail.html?id="+e.id+"'><img src='"+e.img+"' alt=\"\"></a></div>\n" +
                                 "                        <div class=\"info\">\n" +
-                                "                            <a href=\"\" class=\"name\">"+e.name+"</a>\n" +
+                                "                            <a href=\"detail.html?id="+e.id+"\" class=\"name\">"+e.name+"</a>\n" +
                                 "                            <p class=\"tips\">"+e.tips+"</p>\n" +
                                 "                            <p class=\"price\">"+e.price+"</p>\n" +
                                 "                            <a href='item.html?id="+e.id+"' class=\"btn\">立即购买</a>\n" +
@@ -54,7 +55,7 @@
                             $("#p3").append("       <li>\n" +
                                 "                        <div class=\"bg\"><a href='detail.html?id="+e.id+"'><img src='"+e.img+"' alt=\"\"></a></div>\n" +
                                 "                        <div class=\"info\">\n" +
-                                "                            <a href=\"\" class=\"name\">"+e.name+"</a>\n" +
+                                "                            <a href=\"detail.html?id="+e.id+"\" class=\"name\">"+e.name+"</a>\n" +
                                 "                            <p class=\"tips\">"+e.tips+"</p>\n" +
                                 "                            <p class=\"price\">"+e.price+"</p>\n" +
                                 "                            <a href='item.html?id="+e.id+"' class=\"btn\">立即购买</a>\n" +
@@ -66,7 +67,7 @@
                             $("#p4").append("       <li>\n" +
                                 "                        <div class=\"bg\"><a href='detail.html?id="+e.id+"'><img src='"+e.img+"' alt=\"\"></a></div>\n" +
                                 "                        <div class=\"info\">\n" +
-                                "                            <a href=\"\" class=\"name\">"+e.name+"</a>\n" +
+                                "                            <a href=\"detail.html?id="+e.id+"\" class=\"name\">"+e.name+"</a>\n" +
                                 "                            <p class=\"tips\">"+e.tips+"</p>\n" +
                                 "                            <p class=\"price\">"+e.price+"</p>\n" +
                                 "                            <a href='item.html?id="+e.id+"' class=\"btn\">立即购买</a>\n" +
@@ -78,7 +79,7 @@
                             $("#p5").append("       <li>\n" +
                                 "                        <div class=\"bg\"><a href='detail.html?id="+e.id+"'><img src='"+e.img+"' alt=\"\"></a></div>\n" +
                                 "                        <div class=\"info\">\n" +
-                                "                            <a href=\"\" class=\"name\">"+e.name+"</a>\n" +
+                                "                            <a href=\"detail.html?id="+e.id+"\" class=\"name\">"+e.name+"</a>\n" +
                                 "                            <p class=\"tips\">"+e.tips+"</p>\n" +
                                 "                            <p class=\"price\">"+e.price+"</p>\n" +
                                 "                            <a href='item.html?id="+e.id+"'  class=\"btn\">立即购买</a>\n" +
@@ -100,17 +101,18 @@
         <div class="container">
             <div class="topbar-nav">
                 <a href="index.html">MXG商城</a><span>|</span>
-                <a href="">MXGUI</a><span>|</span>
-                <a href="">云服务</a><span>|</span>
-                <a href="">金融</a><span>|</span>
-                <a href="">有品</a><span>|</span>
-                <a href="">政企服务</a><span>|</span>
+                <a href="404.html">MXGUI</a><span>|</span>
+                <a href="404.html">云服务</a><span>|</span>
+                <a href="404.html">金融</a><span>|</span>
+                <a href="404.html">有品</a><span>|</span>
+                <a href="404.html">政企服务</a><span>|</span>
             </div>
             <div class="topbar-cart"><a href="cart.html"><i class="iconfont">&#xe60c;</i>购物车<span>（0）</span></a></div>
             <div class="topbar-info clearfix" id="div01">
                  <a href="login.html">登录</a><span>|</span>
                  <a href="register.html">注册</a><span>|</span>
-                 <a href="" class="sep">消息通知</a>
+                 <a href="404.html" class="sep">消息通知</a><span>|</span>
+                <a href="item2.html">我的订单</a>
             </div>
         </div>
     </div>
