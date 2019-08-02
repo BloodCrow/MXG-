@@ -1,9 +1,6 @@
 package com.czxy.controller;
 
-import com.czxy.domain.Orderitem;
-import com.czxy.domain.Product;
-import com.czxy.domain.User;
-import com.czxy.domain.Userpojotwo;
+import com.czxy.domain.*;
 import com.czxy.service.CaritemService;
 import com.czxy.service.OrderitemService;
 import com.czxy.service.ProductService;
@@ -35,7 +32,7 @@ public class OrderitemController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<Orderitem> order(@PathVariable("id") String id, HttpSession session) {
+    public ResponseEntity<OrderPojotwo> order(@PathVariable("id") String id, HttpSession session) {
         User user = (User) session.getAttribute("user");
         if (user==null){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -46,17 +43,19 @@ public class OrderitemController {
         Orderitem orderitem=new Orderitem(user.getId(),product.getName(),Double.parseDouble(product.getPrice()),1,"未支付",format);
         orderitemService.add(orderitem);
         Orderitem time = orderitemService.findorderTime(format);
-        return new ResponseEntity<>(time,HttpStatus.OK);
+        OrderPojotwo orderPojotwo=new OrderPojotwo(time,user);
+        return new ResponseEntity<>(orderPojotwo,HttpStatus.OK);
     }
 
     @GetMapping
-    public ResponseEntity<List<Orderitem>> listcar(HttpSession session){
+    public ResponseEntity<OrderPojo> listcar(HttpSession session){
         User user = (User) session.getAttribute("user");
         if (user==null){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         List<Orderitem> orderall = orderitemService.findall(user.getId());
-        return new ResponseEntity<>(orderall,HttpStatus.OK);
+        OrderPojo orderPojo=new OrderPojo(orderall,user);
+        return new ResponseEntity<>(orderPojo,HttpStatus.OK);
     }
 
 

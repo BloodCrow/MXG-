@@ -20,26 +20,31 @@
 					data:"get",
 					statusCode: {
 						200: function (data) {
+							$("#div01").html( "<a> 欢迎你:"+data.user.username+"</a><span>|</span>" +
+									"<a href=\"login.html\">退出登录</a><span>|</span>" +
+									"<a href=\"\" class=\"sep\">消息通知</a>")
+
+
 							$("#tbody").append("\t<tr class=\"active\">\n" +
 									"\t\t\t\t\t\t\t\t<td width=\"60\" width=\"10%\">\n" +
-									"\t\t\t\t\t\t\t\t\t<span class=\"subtotal\">" + data.oid + "</span>\n" +
+									"\t\t\t\t\t\t\t\t\t<span class=\"subtotal\">" + data.orderitem.oid + "</span>\n" +
 									"\t\t\t\t\t\t\t\t</td>\n" +
 									"\t\t\t\t\t\t\t\t<td width=\"20%\">\n" +
-									"\t\t\t\t\t\t\t\t\t<a target=\"_blank\">" + data.pname + "</a>\n" +
+									"\t\t\t\t\t\t\t\t\t<a target=\"_blank\">" + data.orderitem.pname + "</a>\n" +
 									"\t\t\t\t\t\t\t\t</td>\n" +
 									"\t\t\t\t\t\t\t\t<td width=\"10%\">\n" +
-									"\t\t\t\t\t\t\t\t\t" + data.price + "\n" +
+									"\t\t\t\t\t\t\t\t\t" + data.orderitem.price + "\n" +
 									"\t\t\t\t\t\t\t\t</td>\n" +
 									"\t\t\t\t\t\t\t\t<td width=\"10%\">\n" +
-									"\t\t\t\t\t\t " + data.number + "\t\t" +
+									"\t\t\t\t\t\t " + data.orderitem.number + "\t\t" +
 									"\t\t\t\t\t\t\t\t<td width=\"10%\">\n" +
-									"\t\t\t\t\t\t\t\t\t<span class=\"subtotal\">" + data.sumprice + "</span>\n" +
+									"\t\t\t\t\t\t\t\t\t<span class=\"subtotal\">" + data.orderitem.sumprice + "</span>\n" +
 									"\t\t\t\t\t\t\t\t</td>\n" +
 									"\t\t\t\t\t\t\t\t<td width=\"10%\">\n" +
-									"\t\t\t\t\t\t\t\t\t<span class=\"subtotal\">" + data.orderStatus + "</span>\n" +
+									"\t\t\t\t\t\t\t\t\t<span class=\"subtotal\">" + data.orderitem.orderStatus + "</span>\n" +
 									"\t\t\t\t\t\t\t\t</td>\n" +
 									"\t\t\t\t\t\t\t\t<td width=\"20%\">\n" +
-									"\t\t\t\t\t\t\t\t\t<span class=\"subtotal\">" + data.orderTime + "</span>\n" +
+									"\t\t\t\t\t\t\t\t\t<span class=\"subtotal\">" + data.orderitem.orderTime + "</span>\n" +
 									"\t\t\t\t\t\t\t\t</td>\n" +
 									"\t\t\t\t\t\t\t\t<td width=\"10%\">\n" +
 									"\t\t\t\t\t\t\t\t\t<a href=\"javascript:;\" class=\"buy\">支付</a>|<a href=\"javascript:;\" class=\"delete\">删除</a>\n" +
@@ -112,7 +117,7 @@
                 <a href="404.html">政企服务</a><span>|</span>
             </div>
             <div class="topbar-cart"><a href="cart.html"><i class="iconfont">&#xe60c;</i>购物车<span>（0）</span></a></div>
-            <div class="topbar-info clearfix">
+            <div class="topbar-info clearfix" id="div01">
                  <a href="login.html">登录</a><span>|</span>
                  <a href="register.html">注册</a><span>|</span>
                  <a href="404.html" class="sep">消息通知</a><span>|</span>
